@@ -13,7 +13,7 @@ app = FastAPI(title="API Prediksi Penyusutan Aset Masa Depan")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Bisa diganti ke domain websitemu saja untuk keamanan
+    allow_origins=["http://localhost", "http://127.0.0.1:8000"],  # Sesuaikan dengan asal request mu
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
