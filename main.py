@@ -13,7 +13,7 @@ app = FastAPI(title="API Prediksi Penyusutan Aset Masa Depan")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"]
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
