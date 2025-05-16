@@ -4,13 +4,6 @@ import joblib
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Bisa diganti ke domain websitemu saja untuk keamanan
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 # Load model dan scaler
 model = joblib.load('model_regresi_rf_tuned.pkl')
 scaler = joblib.load('scaler_regresi.pkl')
@@ -18,6 +11,13 @@ scaler = joblib.load('scaler_regresi.pkl')
 # Inisialisasi FastAPI
 app = FastAPI(title="API Prediksi Penyusutan Aset Masa Depan")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Bisa diganti ke domain websitemu saja untuk keamanan
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Nama fitur numerik untuk scaler (sesuai nama SAAT training)
 numerical_features = [
     'MASA PEROLEHAN', 'NILAI PEROLEHAN', 'Selisih_Semester', 'Umur_Aset'
