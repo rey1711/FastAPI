@@ -2,7 +2,15 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Bisa diganti ke domain websitemu saja untuk keamanan
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Load model dan scaler
 model = joblib.load('model_regresi_rf_tuned.pkl')
 scaler = joblib.load('scaler_regresi.pkl')
